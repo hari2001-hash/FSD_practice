@@ -16,12 +16,10 @@ app.use(express.json());
 const userRoutes = require("./routes/userRoutes");
 app.use("/api", userRoutes);
 
-
-
 // mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 //   .then(() => console.log("MongoDB connected"))
 //   .catch(err => console.log("MongoDB error:", err));
-// moved this code to config folder-->db.js
+// moved this code to config folder-->dv.js
   const connectDB = require("./config/db");
 connectDB();
 
