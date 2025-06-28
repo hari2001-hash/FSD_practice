@@ -1,10 +1,19 @@
 const User = require("../models/User");
 
+
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const EXPIRES_IN = process.env.JWT_EXPIRES_IN || '1h';
 // Handle login
 const loginUser = async (req, res) => {
-  const { username, password } = req.body;
+  const  username=req.body.username;
+  const password=req.body.password;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   try {
-    const newUser = new User({ username, password });
+    const newUser = new User({ username, hashedPassword });
     await newUser.save();
     res.json({ success: true, message: "User saved to MongoDB" });
   } catch (err) {
