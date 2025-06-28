@@ -11,6 +11,10 @@ const loginUser = async (req, res) => {
   const  username=req.body.username;
   const password=req.body.password;
   const hashedPassword = await bcrypt.hash(password, 10);
+  console.log("password: "+password);
+  console.log("hashedPassword: "+hashedPassword);
+
+
 
   try {
     const newUser = new User({ username, hashedPassword });
