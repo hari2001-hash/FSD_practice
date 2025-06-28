@@ -28,7 +28,7 @@
 // });
 //
 // module.exports = router; // ✅ Important!
-// moved the logic to controller folder--> userController.js
+moved the logic to controller folder--> userController
 
 const express = require("express");
 const router = express.Router();
@@ -37,8 +37,5 @@ const { loginUser, getAllUsers } = require("../controllers/userController");
 
 router.post("/login", loginUser);
 router.get("/users", getAllUsers);
-
-
-
 
 module.exports = router;
